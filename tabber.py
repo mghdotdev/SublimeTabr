@@ -1,26 +1,34 @@
 import sublime
 import sublime_plugin
 
+TabberSelections = []
+TabberSelectionCounter = 0;
+
 class TabberCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 
-		# Set Variable `selections` to current selection array
+		TabberSelections = []
 		selections = self.view.sel()
-
-		# Define `placeholder` variable and loop through `selections`
-		placeholder = 0;
+		
 		for region in selections:
 
-			# Set `placeholder` to increment | if last iteration... set `placeholder` to 0
-			placeholder += 1
-			if placeholder == len(selections):
-				placeholder = 0
+			TabberSelections.append([region.begin(), region.end()])
+			self.view.replace(edit, region, '')
 
-			# Run Command `replace` on `region`
-			self.view.replace(edit, region, '$=' + str(placeholder))
+		self.view.sel().clear()
+		self.view.sel().add(sublime.Region(TabberSelections[0][0]))
 
+class TabberTabHandler(sublime_plugin.EventListener):
+	def on_query_context(self, view, key, operator, operand, match_all):
 
+		# if key != 'tabber':
+		# 	return None
+		# else:
+		# 	return True
 
+		# print(key)
 
-#### TEST ZONE ####
-# self.view.run_command('insert_snippet', {"contents": "$1$0"})
+class TabberGoToNextCommand(sublime_plugin.TextCommand):
+	def run(self, edit):
+
+		print('Hi There!')

@@ -1,68 +1,86 @@
 import sublime
 import sublime_plugin
 
-TabberSelections = []
-TabberSelectionCounter = 0
-TabberActive = False
+tabberActive
+tabberSelections
+tabberSelectionCounter
+tabberCharacterCount
 
 class TabberCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 
-		global TabberSelections
-		global TabberActive
-		global TabberSelectionCounter
+		global tabberSelections
+		global tabberActive
+		global tabberSelectionCounter
+		global tabberCharacterCount
 
-		TabberSelections = []
-		TabberSelectionCounter = 0
+		tabberActive = False
+		tabberSelections = []
+		tabberSelectionCounter = 0
+		tabberCharacterCount = -1
 
 		selections = self.view.sel()
 		
 		for region in selections:
 
-			TabberSelections.append([region.begin(), region.end()])
+			tabberSelections.append([region.begin(), region.begin()])
 			self.view.replace(edit, region, '')
 
 		self.view.sel().clear()
-		self.view.sel().add(sublime.Region(TabberSelections[0][0]))
+		self.view.sel().add(sublime.Region(tabberSelections[0][0]))
 
-		TabberActive = True
+		print(tabberSelections)
+
+		tabberActive = True
 
 class TabberTabHandler(sublime_plugin.EventListener):
 	def on_query_context(self, view, key, operator, operand, match_all):
 
-		global TabberActive
+		global tabberActive
 
-		if key == 'tabber' and TabberActive == True:
+		if key == 'tabber_tab' and tabberActive == True:
 			return True
+
+class TabberDeleteHandler(sublime_plugin.EventListener):
+	def on_query_context(self, view, key, operator, operand, match_all):
+
+		global tabberActive
+		global tabberCharacterCount
+
+		print(key)
+
+		if (key == 'tabber_delete' or key == 'tabber_backspace') and tabberActive == True:
+			tabberCharacterCount -= 2;
 
 class TabberGotoNextCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 
-		global TabberSelections
-		global TabberSelectionCounter
-		global TabberActive
+		global tabberSelections
+		global tabberSelectionCounter
+		global tabberActive
+		global tabberCharacterCount
 
-		TabberSelectionCounter += 1;
+		tabberCharacterCount = 0
+		tabberSelectionCounter += 1
 
-		if TabberSelectionCounter < len(TabberSelections):
+		print(tabberSelections)
+
+		if tabberSelectionCounter < len(tabberSelections):
 			self.view.sel().clear()
-			self.view.sel().add(sublime.Region(TabberSelections[TabberSelectionCounter][0]))
+			self.view.sel().add(sublime.Region(tabberSelections[tabberSelectionCounter][1]))
 		else:
-			TabberActive = False
+			tabberActive = False
 
 class TabberGotoPreviousCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 
-		global TabberSelections
-		global TabberSelectionCounter
-		global TabberActiveW
+		""
 
-		TabberSelectionCounter -= 1;
+class TabberCountCommand(sublime_plugin.EventListener):
+	def on_modified(self, view):
 
-		print(TabberSelectionCounter)
+		global tabberCharacterCount
+		global tabberSelectionCounter
 
-		if TabberSelectionCounter < len(TabberSelections) and TabberSelectionCounter > -1:
-			self.view.sel().clear()
-			self.view.sel().add(sublime.Region(TabberSelections[TabberSelectionCounter][0]))
-		else:
-			TabberSelectionCounter = 0
+		tabberCharacterCount += 1
+		tabberSelections[tabberSelectionCounter][1] = tabberCharacterCount

@@ -8,7 +8,7 @@
 
 			{
 				"match_all": true,
-				"key": "tabber"
+				"key": "tabber_tab"
 			}
 		]
 	},
@@ -21,7 +21,20 @@
 
 			{
 				"match_all": true,
-				"key": "tabber"
+				"key": "tabber_tab"
+			}
+		]
+	},
+	{
+		"keys": [
+			"backspace"
+		],
+		"command": "tabber_delete",
+		"context": [
+
+			{
+				"match_all": true,
+				"key": "tabber_delete"
 			}
 		]
 	},

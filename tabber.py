@@ -1,10 +1,10 @@
 import sublime
 import sublime_plugin
 
-tabberActive
-tabberSelections
-tabberSelectionCounter
-tabberCharacterCount
+tabberActive = False
+tabberSelections = []
+tabberSelectionCounter = 0
+tabberCharacterCount = -1
 
 class TabberCommand(sublime_plugin.TextCommand):
 	def run(self, edit):

@@ -36,7 +36,7 @@ class TabberCommand(sublime_plugin.TextCommand):
 		# Set Globals
 		TabberVariables['tabberActive'] = True
 		TabberVariables['tabberCurrentSelection'] = 0
-		TabberVariables['viewSize'] = self.view.size();
+		TabberVariables['viewSize'] = self.view.size()
 
 class TabberTabHandler(sublime_plugin.EventListener):
 	def on_query_context(self, view, key, operator, operand, match_all):

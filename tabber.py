@@ -50,10 +50,11 @@ class TabberExitCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 
 		global TabberVariables
-		
+
 		TabberVariables['tabberActive'] = False
-		TabberVariables['tabberCurrentSelection'] = 0
 		TabberVariables['tabberSelections'] = []
+		TabberVariables['tabberCurrentSelection'] = 0
+		TabberVariables['viewSize'] = 0
 
 class TabberTabHandler(sublime_plugin.EventListener):
 	def on_query_context(self, view, key, operator, operand, match_all):
@@ -70,6 +71,8 @@ class TabberGotoNextCommand(sublime_plugin.TextCommand):
 
 		TabberVariables['tabberCurrentSelection'] += 1
 
+		print(TabberVariables['tabberCurrentSelection'], len(TabberVariables['tabberSelections']))
+
 		offset = 0
 		for x in range(0, TabberVariables['tabberCurrentSelection']):
 			offset += TabberVariables['tabberSelections'][x]['difference']
@@ -77,12 +80,15 @@ class TabberGotoNextCommand(sublime_plugin.TextCommand):
 		if TabberVariables['tabberCurrentSelection'] < len(TabberVariables['tabberSelections']):
 			self.view.sel().clear()
 			self.view.sel().add( sublime.Region( TabberVariables['tabberSelections'][TabberVariables['tabberCurrentSelection']]['start'] + offset ) )
-		else:
-			TabberVariables['tabberActive'] = False
-			TabberVariables['tabberSelections'] = []
-
-		# Reset View Size
-		TabberVariables['viewSize'] = self.view.size()
+			
+			# Reset View Size
+			TabberVariables['viewSize'] = self.view.size()
+			
+			if (TabberVariables['tabberCurrentSelection'] + 1) == len(TabberVariables['tabberSelections']):
+				TabberVariables['tabberActive'] = False
+				TabberVariables['tabberSelections'] = []
+				TabberVariables['tabberCurrentSelection'] = 0
+				TabberVariables['viewSize'] = 0
 
 class TabberGotoPreviousCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
@@ -90,6 +96,7 @@ class TabberGotoPreviousCommand(sublime_plugin.TextCommand):
 		global TabberVariables
 
 		# NEEDS TO BE SOLVED
+		
 
 class TabberCountCommand(sublime_plugin.EventListener):
 	def on_modified(self, view):

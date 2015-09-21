@@ -2,5 +2,9 @@
 	{
 		"caption": "Tabber: Create Tab Order",
 		"command": "tabber"
+	},
+	{
+		"caption": "Tabber: Exit Tab Order",
+		"command": "tabber_exit"
 	}
 ]

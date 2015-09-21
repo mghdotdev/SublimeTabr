@@ -71,19 +71,18 @@ class TabberGotoNextCommand(sublime_plugin.TextCommand):
 
 		TabberVariables['tabberCurrentSelection'] += 1
 
-		print(TabberVariables['tabberCurrentSelection'], len(TabberVariables['tabberSelections']))
-
 		offset = 0
 		for x in range(0, TabberVariables['tabberCurrentSelection']):
 			offset += TabberVariables['tabberSelections'][x]['difference']
 
 		if TabberVariables['tabberCurrentSelection'] < len(TabberVariables['tabberSelections']):
 			self.view.sel().clear()
-			self.view.sel().add( sublime.Region( TabberVariables['tabberSelections'][TabberVariables['tabberCurrentSelection']]['start'] + offset ) )
+			self.view.sel().add( sublime.Region( TabberVariables['tabberSelections'][TabberVariables['tabberCurrentSelection']]['end'] + offset ) )
 			
 			# Reset View Size
 			TabberVariables['viewSize'] = self.view.size()
 			
+			# Last Selection
 			if (TabberVariables['tabberCurrentSelection'] + 1) == len(TabberVariables['tabberSelections']):
 				TabberVariables['tabberActive'] = False
 				TabberVariables['tabberSelections'] = []
@@ -95,8 +94,20 @@ class TabberGotoPreviousCommand(sublime_plugin.TextCommand):
 
 		global TabberVariables
 
-		# NEEDS TO BE SOLVED
-		
+		TabberVariables['tabberCurrentSelection'] -= 1
+
+		offset = 0
+		for x in range(0, TabberVariables['tabberCurrentSelection']):
+			offset += TabberVariables['tabberSelections'][x]['difference']
+
+		if TabberVariables['tabberCurrentSelection'] >= 0:
+			self.view.sel().clear()
+			self.view.sel().add( sublime.Region( TabberVariables['tabberSelections'][TabberVariables['tabberCurrentSelection']]['end'] + offset ) )
+			
+			# Reset View Size
+			TabberVariables['viewSize'] = self.view.size()
+		else:
+			TabberVariables['tabberCurrentSelection'] = 0
 
 class TabberCountCommand(sublime_plugin.EventListener):
 	def on_modified(self, view):
@@ -104,5 +115,5 @@ class TabberCountCommand(sublime_plugin.EventListener):
 		global TabberVariables
 
 		if (len(TabberVariables['tabberSelections']) > 0):
-			TabberVariables['tabberSelections'][TabberVariables['tabberCurrentSelection']]['end'] = TabberVariables['tabberSelections'][TabberVariables['tabberCurrentSelection']]['end'] + view.size() - TabberVariables['viewSize']
 			TabberVariables['tabberSelections'][TabberVariables['tabberCurrentSelection']]['difference'] = view.size() - TabberVariables['viewSize']
+			TabberVariables['tabberSelections'][TabberVariables['tabberCurrentSelection']]['end'] = TabberVariables['tabberSelections'][TabberVariables['tabberCurrentSelection']]['start'] + TabberVariables['tabberSelections'][TabberVariables['tabberCurrentSelection']]['difference']

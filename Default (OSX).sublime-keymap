@@ -1,32 +1,21 @@
 [
-	{
-		"keys": [
-			"tab"
-		], 
-		"command": "tabber_goto_next", 
+	{ "keys": [ "tab" ], "command": "tabber_goto_next",
 		"context": [
-
-			{
-				"key": "tabber_tab"
-			}
+			{ "key": "tabber_tab", "operator": "equal", "operand": true }
 		]
 	},
-	{
-		"keys": [
-			"shift+tab"
-		], 
-		"command": "tabber_goto_previous", 
+	{ "keys": [ "shift+tab" ], "command": "tabber_goto_previous",
 		"context": [
-
-			{
-				"key": "tabber_tab"
-			}
+			{ "key": "tabber_tab", "operator": "equal", "operand": true }
 		]
 	},
-	{
-		"keys": [
-			"ctrl+shift+t"
-		],
-		"command": "tabber"
-	}
+	{ "keys": [ "escape" ], "command": "tabber_exit",
+		"context": [
+			{ "key": "tabber_escape", "operator": "equal", "operand": true },
+			{ "key": "auto_complete_visible", "operator": "equal", "operand": false },
+			{ "key": "panel_visible", "operator": "equal", "operand": false },
+			{ "key": "overlay_visible", "operator": "equal", "operand": false }
+		]
+	},
+	{ "keys": [ "super+shift+t" ], "command": "tabber" }
 ]

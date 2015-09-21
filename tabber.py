@@ -38,6 +38,23 @@ class TabberCommand(sublime_plugin.TextCommand):
 		TabberVariables['tabberCurrentSelection'] = 0
 		TabberVariables['viewSize'] = self.view.size()
 
+class TabberEscapeHandler(sublime_plugin.EventListener):
+	def on_query_context(self, view, key, operator, operand, match_all):
+
+		global TabberVariables
+
+		if key == 'tabber_escape' and TabberVariables['tabberActive'] == True:
+			return True
+
+class TabberExitCommand(sublime_plugin.TextCommand):
+	def run(self, edit):
+
+		global TabberVariables
+		
+		TabberVariables['tabberActive'] = False
+		TabberVariables['tabberCurrentSelection'] = 0
+		TabberVariables['tabberSelections'] = []
+
 class TabberTabHandler(sublime_plugin.EventListener):
 	def on_query_context(self, view, key, operator, operand, match_all):
 

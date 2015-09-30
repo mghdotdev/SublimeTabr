@@ -94,20 +94,22 @@ class TabberGotoPreviousCommand(sublime_plugin.TextCommand):
 
 		global TabberVariables
 
-		TabberVariables['tabberCurrentSelection'] -= 1
+		### TODO = Working on fixing `shift+tab` functionality
 
-		offset = 0
-		for x in range(0, TabberVariables['tabberCurrentSelection']):
-			offset += TabberVariables['tabberSelections'][x]['difference']
+		# TabberVariables['tabberCurrentSelection'] -= 1
 
-		if TabberVariables['tabberCurrentSelection'] >= 0:
-			self.view.sel().clear()
-			self.view.sel().add( sublime.Region( TabberVariables['tabberSelections'][TabberVariables['tabberCurrentSelection']]['end'] + offset ) )
+		# offset = 0
+		# for x in range(0, TabberVariables['tabberCurrentSelection']):
+		# 	offset += TabberVariables['tabberSelections'][x]['difference']
+
+		# if TabberVariables['tabberCurrentSelection'] >= 0:
+		# 	self.view.sel().clear()
+		# 	self.view.sel().add( sublime.Region( TabberVariables['tabberSelections'][TabberVariables['tabberCurrentSelection']]['end'] + offset ) )
 			
-			# Reset View Size
-			TabberVariables['viewSize'] = self.view.size()
-		else:
-			TabberVariables['tabberCurrentSelection'] = 0
+		# 	# Reset View Size
+		# 	TabberVariables['viewSize'] = self.view.size()
+		# else:
+		# 	TabberVariables['tabberCurrentSelection'] = 0
 
 class TabberCountCommand(sublime_plugin.EventListener):
 	def on_modified(self, view):

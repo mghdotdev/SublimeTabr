@@ -1,20 +1,16 @@
 [
 	{ "keys": [ "tab" ], "command": "tabber_goto_next",
 		"context": [
+			{ "key": "auto_complete_visible", "operator": "equal", "operand": false },
 			{ "key": "tabber_tab", "operator": "equal", "operand": true }
 		]
 	},
-	// { "keys": [ "shift+tab" ], "command": "tabber_goto_previous",
-	// 	"context": [
-	// 		{ "key": "tabber_tab", "operator": "equal", "operand": true }
-	// 	]
-	// },
 	{ "keys": [ "escape" ], "command": "tabber_exit",
 		"context": [
-			{ "key": "tabber_escape", "operator": "equal", "operand": true },
 			{ "key": "auto_complete_visible", "operator": "equal", "operand": false },
 			{ "key": "panel_visible", "operator": "equal", "operand": false },
-			{ "key": "overlay_visible", "operator": "equal", "operand": false }
+			{ "key": "overlay_visible", "operator": "equal", "operand": false },
+			{ "key": "tabber_escape", "operator": "equal", "operand": true }
 		]
 	},
 	{ "keys": [ "ctrl+shift+t" ], "command": "tabber" }

@@ -89,28 +89,6 @@ class TabberGotoNextCommand(sublime_plugin.TextCommand):
 				TabberVariables['tabberCurrentSelection'] = 0
 				TabberVariables['viewSize'] = 0
 
-class TabberGotoPreviousCommand(sublime_plugin.TextCommand):
-	def run(self, edit):
-
-		global TabberVariables
-
-		### TODO = Working on fixing `shift+tab` functionality
-
-		# TabberVariables['tabberCurrentSelection'] -= 1
-
-		# offset = 0
-		# for x in range(0, TabberVariables['tabberCurrentSelection']):
-		# 	offset += TabberVariables['tabberSelections'][x]['difference']
-
-		# if TabberVariables['tabberCurrentSelection'] >= 0:
-		# 	self.view.sel().clear()
-		# 	self.view.sel().add( sublime.Region( TabberVariables['tabberSelections'][TabberVariables['tabberCurrentSelection']]['end'] + offset ) )
-			
-		# 	# Reset View Size
-		# 	TabberVariables['viewSize'] = self.view.size()
-		# else:
-		# 	TabberVariables['tabberCurrentSelection'] = 0
-
 class TabberCountCommand(sublime_plugin.EventListener):
 	def on_modified(self, view):
 

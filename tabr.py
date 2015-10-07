@@ -43,7 +43,7 @@ class TabrEscapeHandler(sublime_plugin.EventListener):
 
 		global TabrVariables
 
-		if key == 'Tabr_escape' and TabrVariables['TabrActive'] == True:
+		if key == 'tabr_escape' and TabrVariables['TabrActive'] == True:
 			return True
 
 class TabrExitCommand(sublime_plugin.TextCommand):
@@ -61,7 +61,7 @@ class TabrTabHandler(sublime_plugin.EventListener):
 
 		global TabrVariables
 
-		if key == 'Tabr_tab' and TabrVariables['TabrActive'] == True:
+		if key == 'tabr_tab' and TabrVariables['TabrActive'] == True:
 			return True
 
 class TabrGotoNextCommand(sublime_plugin.TextCommand):

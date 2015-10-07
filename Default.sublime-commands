@@ -1,10 +1,10 @@
 [
 	{
-		"caption": "[tab]r: Create Tab Order",
+		"caption": "tabr: Create Tab Order",
 		"command": "tabr"
 	},
 	{
-		"caption": "[tab]r: Exit Tab Order",
+		"caption": "tabr: Exit Tab Order",
 		"command": "tabr_exit"
 	}
 ]

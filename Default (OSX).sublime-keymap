@@ -1,17 +1,17 @@
 [
-	{ "keys": [ "tab" ], "command": "tabber_goto_next",
+	{ "keys": [ "tab" ], "command": "tabr_goto_next",
 		"context": [
 			{ "key": "auto_complete_visible", "operator": "equal", "operand": false },
-			{ "key": "tabber_tab", "operator": "equal", "operand": true }
+			{ "key": "tabr_tab", "operator": "equal", "operand": true }
 		]
 	},
-	{ "keys": [ "escape" ], "command": "tabber_exit",
+	{ "keys": [ "escape" ], "command": "tabr_exit",
 		"context": [
 			{ "key": "auto_complete_visible", "operator": "equal", "operand": false },
 			{ "key": "panel_visible", "operator": "equal", "operand": false },
 			{ "key": "overlay_visible", "operator": "equal", "operand": false },
-			{ "key": "tabber_escape", "operator": "equal", "operand": true }
+			{ "key": "tabr_escape", "operator": "equal", "operand": true }
 		]
 	},
-	{ "keys": [ "super+shift+t" ], "command": "tabber" }
+	{ "keys": [ "super+shift+t" ], "command": "tabr" }
 ]

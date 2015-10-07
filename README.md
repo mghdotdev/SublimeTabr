@@ -5,7 +5,7 @@ Replace your current selections with a dynamically created tab order.
 1. Multi-select the areas you would like to create a tab order.
 2. Execute the "tabr" command.
   * by Keystroke: <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd> / <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>T/kbd>)
-  * by Quick Panel: "[tab]r: Create Tab Order"
+  * by Quick Panel: "tabr: Create Tab Order"
 3. Begin typing / tabbing.
 
 NOTE:_You may exit the tab order at any time by pressing <kbd>Esc</kbd>_

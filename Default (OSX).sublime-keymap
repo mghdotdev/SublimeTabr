@@ -1,7 +1,7 @@
 [
 	{ "keys": [ "tab" ], "command": "tabr_goto_next",
 		"context": [
-			{ "key": "auto_complete_visible", "operator": "equal", "operand": false },
+			// { "key": "auto_complete_visible", "operator": "equal", "operand": false },
 			{ "key": "tabr_tab", "operator": "equal", "operand": true }
 		]
 	},

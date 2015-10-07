@@ -4,7 +4,7 @@ Replace your current selections with a dynamically created tab order.
 ##### How to Use
 1. Multi-select targets for your tab order.
 2. Execute the "tabr" command.
-  * by Keystroke: <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd> / <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>T/kbd>)
+  * by Keystroke: <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd> -OR- <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd>
   * by Quick Panel: "tabr: Create Tab Order"
 3. Begin typing / tabbing.
 

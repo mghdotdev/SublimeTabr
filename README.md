@@ -1,6 +1,21 @@
 # Sublime[tab]r
 Replace your current selections with a dynamically created tab order.
 
+##### How to Use
+1. Multi-select the areas you would like to create a tab order.
+2. Execute the "tabr" command.
+  * by Keystroke: <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd> / <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>T/kbd>)
+  * by Quick Panel: "[tab]r: Create Tab Order"
+3. Begin typing / tabbing.
+
+NOTE:_You may exit the tab order at any time by pressing <kbd>Esc</kbd>_
+
+##### Demo
+
+##### Package Features
+* Autocomplete with tab will still work while [tab]r is active.
+
+<!---
 ---
 
 ### Install via Package Control
@@ -9,3 +24,4 @@ Replace your current selections with a dynamically created tab order.
 * Type "Package Control: Install Package" ... Press ENTER.
 * Search for "SublimeTabr" ... Press ENTER.
 * Done!
+ -->

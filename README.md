@@ -11,9 +11,7 @@ Replace your current selections with a dynamically created tab order.
 NOTE:_You may exit the tab order at any time by pressing <kbd>Esc</kbd>_
 
 ##### Demo
-
-##### Package Features
-* Autocomplete with tab will still work while [tab]r is active.
+![](assets/demo.gif)
 
 <!---
 ---

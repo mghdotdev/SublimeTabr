@@ -13,7 +13,6 @@ NOTE:_You may exit the tab order at any time by pressing <kbd>Esc</kbd>_
 ##### Demo
 ![](assets/demo.gif)
 
-<!---
 ---
 
 ### Install via Package Control
@@ -22,4 +21,3 @@ NOTE:_You may exit the tab order at any time by pressing <kbd>Esc</kbd>_
 * Type "Package Control: Install Package" ... Press ENTER.
 * Search for "SublimeTabr" ... Press ENTER.
 * Done!
- -->

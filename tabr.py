@@ -31,7 +31,8 @@ class TabrCommand(sublime_plugin.TextCommand):
 
 		# Clear / Place Cursor to First Selection
 		self.view.sel().clear()
-		self.view.sel().add(sublime.Region(TabrVariables['TabrSelections'][0]['start']))
+		self.view.show( TabrVariables['TabrSelections'][0]['start'] )
+		self.view.sel().add( sublime.Region( TabrVariables['TabrSelections'][0]['start'] ) )
 
 		# Set Globals
 		TabrVariables['TabrActive'] = True
@@ -77,6 +78,7 @@ class TabrGotoNextCommand(sublime_plugin.TextCommand):
 
 		if TabrVariables['TabrCurrentSelection'] < len(TabrVariables['TabrSelections']):
 			self.view.sel().clear()
+			self.view.show( TabrVariables['TabrSelections'][TabrVariables['TabrCurrentSelection']]['end'] + offset )
 			self.view.sel().add( sublime.Region( TabrVariables['TabrSelections'][TabrVariables['TabrCurrentSelection']]['end'] + offset ) )
 			
 			# Reset View Size

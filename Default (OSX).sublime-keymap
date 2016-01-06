@@ -13,5 +13,5 @@
 			{ "key": "tabr_escape", "operator": "equal", "operand": true }
 		]
 	},
-	{ "keys": [ "super+shift+t" ], "command": "tabr" }
+	{ "keys": [ "super+shift+alt+t" ], "command": "tabr" }
 ]
